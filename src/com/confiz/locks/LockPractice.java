@@ -1,15 +1,24 @@
-package com.confiz.threads;
+package com.confiz.locks;
 
-public class Syncronized {
+public class LockPractice {
 
 	private int count = 0;
 	
+	Lock lock = new Lock();
+	
 	public void increament() {
+		try {
+			lock.lock();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		count++;
+		lock.unlock();
 	}
 
 	public static void main(String[] args) {
-		Syncronized app = new Syncronized();
+		LockPractice app = new LockPractice();
 		app.doProcess();
 
 	}
